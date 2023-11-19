@@ -1,12 +1,16 @@
-import "./App.css";
-import { Button } from "./components/ui/button";
+import { Route, Routes } from "react-router-dom";
+import { AuthLayout, SignIn, SignUp } from "./pages/auth";
 
 function App() {
   return (
-    <>
-      <h1 className="text-red-400">Snap app</h1>
-      <Button>Shadcn Btn</Button>
-    </>
+    <main className="bg-[#101012] min-h-screen">
+      <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/sign-up" element={<SignUp />} />
+        </Route>
+      </Routes>
+    </main>
   );
 }
 
