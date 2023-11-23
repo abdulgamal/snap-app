@@ -1,3 +1,5 @@
+import ImageCard from "./ImageCard";
+
 function Card() {
   return (
     <div className="bg-black/80 p-3 rounded-lg">
@@ -16,13 +18,7 @@ function Card() {
           In the midst of life we are in death
         </p>
       </div>
-      <div className="my-3 h-[250px]">
-        <img
-          src="https://images.unsplash.com/photo-1700585832202-43c7d0377690?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D"
-          alt=""
-          className="rounded-md object-cover h-full w-full"
-        />
-      </div>
+      <ImageCard url="https://images.unsplash.com/photo-1700585832202-43c7d0377690?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDZ8NnNNVmpUTFNrZVF8fGVufDB8fHx8fA%3D%3D" />
       <div className="flex items-center justify-between my-1">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1">

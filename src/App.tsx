@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import { AuthLayout, SignIn, SignUp } from "./pages/auth";
 import Home from "./pages/main/Home";
 import MainLayout from "./pages/main/MainLayout";
+import Saved from "./pages/main/Saved";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         </Route>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/saved" element={<Saved />} />
         </Route>
       </Routes>
     </main>

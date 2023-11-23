@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 function MainLayout() {
   return (
@@ -16,16 +16,28 @@ function MainLayout() {
           <div className="my-10">
             <ul className="flex flex-col gap-10">
               <li>
-                <div className="flex items-center gap-2">
-                  <img src="assets/icons/home.svg" alt="" className="h-5 w-5" />
-                  <p className="text-gray-400">Home</p>
-                </div>
+                <Link to="/">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src="assets/icons/home.svg"
+                      alt=""
+                      className="h-5 w-5"
+                    />
+                    <p className="text-gray-400">Home</p>
+                  </div>
+                </Link>
               </li>
               <li>
-                <div className="flex items-center gap-2">
-                  <img src="assets/icons/save.svg" alt="" className="h-5 w-5" />
-                  <p className="text-gray-400">Saved</p>
-                </div>
+                <Link to={"/saved"}>
+                  <div className="flex items-center gap-2">
+                    <img
+                      src="assets/icons/save.svg"
+                      alt=""
+                      className="h-5 w-5"
+                    />
+                    <p className="text-gray-400">Saved</p>
+                  </div>
+                </Link>
               </li>
               <li>
                 <div className="flex items-center gap-2">
