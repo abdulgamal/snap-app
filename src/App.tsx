@@ -4,6 +4,7 @@ import Home from "./pages/main/Home";
 import MainLayout from "./pages/main/MainLayout";
 import Saved from "./pages/main/Saved";
 import Profile from "./pages/main/Profile";
+import Create from "./pages/main/Create";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/saved" element={<Saved />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/create" element={<Create />} />
         </Route>
       </Routes>
     </main>

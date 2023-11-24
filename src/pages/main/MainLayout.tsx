@@ -30,7 +30,7 @@ function MainLayout() {
                 </Link>
               </li>
               <li>
-                <Link to={"/saved"}>
+                <Link to="/saved">
                   <div className="flex items-center gap-2">
                     <img
                       src="assets/icons/save.svg"
@@ -58,14 +58,16 @@ function MainLayout() {
                 </div>
               </li>
               <li>
-                <div className="flex items-center gap-2">
-                  <img
-                    src="assets/icons/gallery-add.svg"
-                    alt=""
-                    className="h-5 w-5"
-                  />
-                  <p className="text-gray-400">Create Post</p>
-                </div>
+                <Link to="/create">
+                  <div className="flex items-center gap-2">
+                    <img
+                      src="assets/icons/gallery-add.svg"
+                      alt=""
+                      className="h-5 w-5"
+                    />
+                    <p className="text-gray-400">Create Post</p>
+                  </div>
+                </Link>
               </li>
             </ul>
           </div>
