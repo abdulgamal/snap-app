@@ -5,13 +5,15 @@ function MainLayout() {
     <section className="h-screen flex container mx-auto">
       <div className="h-screen p-5 flex flex-col">
         <img src="assets/images/logo.svg" alt="" />
-        <div className="flex items-center gap-1.5 my-3">
-          <img src="assets/images/profile.png" alt="" className="h-10 w-10" />
-          <div>
-            <p className="text-gray-400 text-sm">Tamacti Jun</p>
-            <p className="text-gray-400 text-xs">@tamactijun</p>
+        <Link to="/profile">
+          <div className="flex items-center gap-1.5 my-3">
+            <img src="assets/images/profile.png" alt="" className="h-10 w-10" />
+            <div>
+              <p className="text-gray-400 text-sm">Tamacti Jun</p>
+              <p className="text-gray-400 text-xs">@tamactijun</p>
+            </div>
           </div>
-        </div>
+        </Link>
         <div className="flex flex-col flex-1 justify-between">
           <div className="my-10">
             <ul className="flex flex-col gap-10">

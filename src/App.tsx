@@ -3,6 +3,7 @@ import { AuthLayout, SignIn, SignUp } from "./pages/auth";
 import Home from "./pages/main/Home";
 import MainLayout from "./pages/main/MainLayout";
 import Saved from "./pages/main/Saved";
+import Profile from "./pages/main/Profile";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/saved" element={<Saved />} />
+          <Route path="/profile" element={<Profile />} />
         </Route>
       </Routes>
     </main>
