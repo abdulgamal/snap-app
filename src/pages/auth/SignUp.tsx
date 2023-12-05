@@ -11,9 +11,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
-import { registerAccount } from "@/appwrite/Requests";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "@/context/ContextProvider";
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -22,7 +22,8 @@ const formSchema = z.object({
 });
 
 function SignUp() {
-  const [isLoading, setIsLoading] = useState(false);
+  const contextValues = useContext(AppContext);
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -33,15 +34,11 @@ function SignUp() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    try {
-      const response = await registerAccount(values);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
+    contextValues?.registerUser(values);
+  }
+
+  if (contextValues?.user) {
+    navigate("/");
   }
 
   return (
@@ -105,7 +102,7 @@ function SignUp() {
             )}
           />
 
-          {isLoading ? (
+          {contextValues?.isLoading ? (
             <button
               disabled
               type="button"

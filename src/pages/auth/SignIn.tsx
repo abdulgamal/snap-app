@@ -11,9 +11,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Link } from "react-router-dom";
-import { loginAccount } from "@/appwrite/Requests";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AppContext } from "@/context/ContextProvider";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -21,7 +21,8 @@ const formSchema = z.object({
 });
 
 function SignIn() {
-  const [isLoading, setIsLoading] = useState(false);
+  const contextValues = useContext(AppContext);
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -31,15 +32,11 @@ function SignIn() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    setIsLoading(true);
-    try {
-      const response = await loginAccount(values);
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
+    contextValues?.loginUser(values);
+  }
+
+  if (contextValues?.user) {
+    navigate("/");
   }
 
   return (
@@ -89,7 +86,7 @@ function SignIn() {
               </FormItem>
             )}
           />
-          {isLoading ? (
+          {contextValues?.isLoading ? (
             <button
               disabled
               type="button"

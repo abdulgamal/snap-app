@@ -1,7 +1,7 @@
 import { ID } from "appwrite";
 import { account } from "./AppwriteConfig";
 
-type valueProps = {
+export type valueProps = {
   name?: string;
   email: string;
   password: string;
@@ -19,3 +19,5 @@ export const registerAccount = async (values: valueProps) => {
 export const loginAccount = async (values: valueProps) => {
   return await account.createEmailSession(values.email, values.password);
 };
+
+export const logoutAccount = async () => await account.deleteSession("current");

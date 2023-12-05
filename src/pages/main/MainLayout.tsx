@@ -1,6 +1,16 @@
-import { Link, Outlet } from "react-router-dom";
+import { AppContext } from "@/context/ContextProvider";
+import { useContext, useEffect } from "react";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function MainLayout() {
+  const navigate = useNavigate();
+  const contextValues = useContext(AppContext);
+
+  useEffect(() => {
+    if (!contextValues?.user) {
+      navigate("/sign-in");
+    }
+  }, [contextValues?.user, navigate]);
   return (
     <section className="h-screen flex container mx-auto">
       <div className="h-screen p-5 flex flex-col">
@@ -74,7 +84,10 @@ function MainLayout() {
           <div>
             <ul className="flex flex-col gap-10">
               <li>
-                <div className="flex items-center gap-2">
+                <div
+                  onClick={() => contextValues?.deleteUser()}
+                  className="flex items-center gap-2"
+                >
                   <img
                     src="assets/icons/logout.svg"
                     alt=""
