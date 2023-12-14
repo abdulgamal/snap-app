@@ -2,7 +2,7 @@ import ImageCard from "./ImageCard";
 
 function Card() {
   return (
-    <div className="bg-black/80 p-3 rounded-lg">
+    <div className="bg-black/80 p-3 rounded-lg overflow-hidden">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-1.5 my-3">
           <img src="assets/images/profile.png" alt="" className="h-10 w-10" />

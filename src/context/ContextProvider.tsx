@@ -1,4 +1,5 @@
 import {
+  createUser,
   loginAccount,
   logoutAccount,
   registerAccount,
@@ -33,6 +34,7 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
     try {
       const response = await registerAccount(val);
       setUser({ id: response.$id, email: response.email });
+      await createUser(val);
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);

@@ -10,7 +10,7 @@ function Home() {
           <img src="assets/icons/filter.svg" alt="" className="h-5 w-5" />
         </div>
       </div>
-      <div className="grid my-8 md:grid-cols-3 gap-3">
+      <div className="grid my-8 md:grid-cols-2 lg:grid-cols-3 gap-3">
         <Card />
         <Card />
         <Card />
