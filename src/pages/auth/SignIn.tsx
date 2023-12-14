@@ -12,8 +12,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { AppContext } from "@/context/ContextProvider";
+import { toast } from "react-toastify";
 
 const formSchema = z.object({
   email: z.string().email(),
@@ -31,6 +32,21 @@ function SignIn() {
     },
   });
 
+  const notify = useCallback(
+    () =>
+      toast(contextValues?.error, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }),
+    [contextValues?.error]
+  );
+
   async function onSubmit(values: z.infer<typeof formSchema>) {
     contextValues?.loginUser(values);
   }
@@ -38,6 +54,12 @@ function SignIn() {
   if (contextValues?.user) {
     navigate("/");
   }
+
+  useEffect(() => {
+    if (contextValues?.error) {
+      notify();
+    }
+  }, [contextValues?.error, notify]);
 
   return (
     <div className="w-7/12">

@@ -6,10 +6,14 @@ import Saved from "./pages/main/Saved";
 import Profile from "./pages/main/Profile";
 import Create from "./pages/main/Create";
 import ContextProvider from "./context/ContextProvider";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <main className="bg-[#101012] min-h-screen">
+      <ToastContainer />
       <ContextProvider>
         <BrowserRouter>
           <Routes>
