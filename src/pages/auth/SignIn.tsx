@@ -51,9 +51,11 @@ function SignIn() {
     contextValues?.loginUser(values);
   }
 
-  if (contextValues?.user) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (contextValues?.user) {
+      navigate("/");
+    }
+  }, [contextValues?.user, navigate]);
 
   useEffect(() => {
     if (contextValues?.error) {

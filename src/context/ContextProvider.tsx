@@ -5,7 +5,7 @@ import {
   registerAccount,
   valueProps,
 } from "@/appwrite/Requests";
-import React, { createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 type defaultValues = {
   user: userProps | null;
@@ -50,6 +50,10 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
     try {
       const response = await loginAccount(val);
       setUser({ id: response.userId, email: response.providerUid });
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ id: response.userId, email: response.providerUid })
+      );
     } catch (error) {
       if (error instanceof Error) {
         setError(error.message);
@@ -62,7 +66,24 @@ function ContextProvider({ children }: { children: React.ReactNode }) {
   const deleteUser = async () => {
     await logoutAccount();
     setUser(null);
+    localStorage.clear();
   };
+
+  function isObjectEmpty(obj: userProps) {
+    for (const key in obj) {
+      if (Object.prototype.hasOwnProperty.call(obj, key)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user") || "{}");
+    if (!isObjectEmpty(storedUser)) {
+      setUser(storedUser);
+    }
+  }, []);
 
   const values = {
     user,
