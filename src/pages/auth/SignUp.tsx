@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "@/context/ContextProvider";
 
 const formSchema = z.object({
@@ -37,9 +37,11 @@ function SignUp() {
     contextValues?.registerUser(values);
   }
 
-  if (contextValues?.user) {
-    navigate("/");
-  }
+  useEffect(() => {
+    if (contextValues?.user) {
+      navigate("/");
+    }
+  }, [contextValues?.user, navigate]);
 
   return (
     <div className="w-7/12">
